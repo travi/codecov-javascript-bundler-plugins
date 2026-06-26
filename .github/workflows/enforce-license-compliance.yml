@@ -11,6 +11,11 @@ jobs:
   enforce-license-compliance:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
       - name: 'Enforce License Compliance'
         uses: getsentry/action-enforce-license-compliance@57ba820387a1a9315a46115ee276b2968da51f3d # main
         with:

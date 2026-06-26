@@ -22,6 +22,11 @@ jobs:
       contains(github.event.head_commit.message, 'meta(changelog)')
       && contains(github.event.head_commit.message, 'Update package versions')
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
       - name: Checkout Repo
         uses: actions/checkout@v4
 
@@ -74,6 +79,11 @@ jobs:
       contains(github.event.head_commit.message, 'meta(changelog)')
       && contains(github.event.head_commit.message, 'Update package versions')
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
       - name: Checkout Repo
         uses: actions/checkout@v4
 
